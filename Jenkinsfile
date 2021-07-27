@@ -1,8 +1,15 @@
 pipeline {
+  agent any
+  stages {
+      stage('scm'){
+          steps {
+
+          }
+
+      }
+  }
+}pipeline {
     agent any
-    triggers {
-        cron('* * * * *')
-        pollSCM('* * * * *')
     }
     parameters {
         string(name: 'BRANCH', defaultValue: 'master', description: 'Branch to build' )
@@ -21,11 +28,5 @@ pipeline {
             }
         }
     }
-    post {
-        success {
-            archive '**/gameoflife.war'
-            
-        }
-        
-    }
+    
 }
