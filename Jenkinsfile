@@ -1,7 +1,7 @@
 pipeline {
     agent any
     triggers {
-        cron('H * * * *')
+        cron('* * * * *')
         pollSCM('* * * * *')
     }
     parameters {
@@ -17,14 +17,14 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'mvn package'
+                sh 'mvn clean package'
             }
         }
     }
     post {
         success {
             archive '**/gameoflife.war'
-            junit '**/TEST-*.xml'
+            
         }
         
     }
