@@ -21,5 +21,16 @@ pipeline {
                 }
             }
         }
-    }
+        rtUpload (
+    serverId: 'MYARTIFACTORY',
+    spec: '''{
+          "files": [
+            {
+              "pattern": "/var/lib/jenkins/workspace/sonarpipeline/gameoflife-build/target/*.jar",
+              "target": "mymavenrepo/"
+            }
+         ]
+    }'''
+        )
+}
 }
