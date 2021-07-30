@@ -12,13 +12,12 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-         stage('SONAR ANALYSIS') {
+          stage('SONAR ANALYSIS') {
             steps{
                 withSonarQubeEnv('SONAR-8.9LTS') {
                 // requires SonarQube Scanner for Maven 3.2+
-                sh 'mvn test'
-                    // requires SonarQube Scanner for Maven 3.2+
-                
+                sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
+                 
                 }
             }
         }
