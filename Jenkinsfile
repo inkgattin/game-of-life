@@ -21,6 +21,7 @@ pipeline {
                 }
             }
         }
+        stage('Artifactory'){
         rtUpload (
     serverId: 'MYARTIFACTORY',
     spec: '''{
@@ -32,5 +33,6 @@ pipeline {
          ]
     }'''
         )
+        }
 }
 }
